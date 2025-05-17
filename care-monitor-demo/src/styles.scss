@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@fontsource/nunito';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+html, body { height: 100%; }
+body { margin: 0;}
+
+*:not(mat-icon){
+ font-family: 'Nunito', sans-serif !important;
+}
+
+
+
+/* In your global styles file (src/styles.scss) */
+
+.mat-paginator {
+  font-size: 1.1rem; /* Use relative units for better scalability */
+}
+
+.mat-paginator-page-size .mat-form-field-label {
+  font-size: 0.9rem;
+}
+
+.mat-paginator-page-size .mat-form-field-infix {
+  font-size: 1.1rem;
+}
+
+.mat-paginator-range-label {
+  font-size: 1rem;
+}
+
+.mat-paginator-navigation-previous button,
+.mat-paginator-navigation-next button,
+.mat-paginator-navigation-first button,
+.mat-paginator-navigation-last button {
+  font-size: 1.1rem;
+}
+
+.mat-icon {
+  font-size: 1.2rem;
+}

@@ -1,0 +1,39 @@
+@use '../../../../assets/styles/variable' as *;
+
+$icon-size: 35px;
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: $bg-color-dark;
+  color: white;
+  height: 60px;
+
+  .left a {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+  }
+
+  .right button {
+    color: white;
+    border: none;
+    padding: 0;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mat-icon {
+    font-size: $icon-size;
+    width:$icon-size;
+    height:$icon-size;
+    flex: 1;
+  }
+}

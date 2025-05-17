@@ -1,0 +1,38 @@
+@use '../assets/styles/mixins' as *;
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+
+    // Dashboard right section
+    .app-wrapper-inner {
+      flex: 1;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+    }
+
+    .center-box {
+      @include centerBox();
+    }
+
+    .post-login-wrapper {
+      flex: 1;
+      padding: 24px;
+    }
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

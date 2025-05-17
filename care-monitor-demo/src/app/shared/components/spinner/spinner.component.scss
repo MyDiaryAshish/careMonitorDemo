@@ -1,0 +1,13 @@
+@use '../../../../assets/styles/variable' as *;
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  height: 100%;
+  padding: 1rem;
+}
+
+::ng-deep .custom-spinner circle {
+  stroke: $bg-color-dark;
+}

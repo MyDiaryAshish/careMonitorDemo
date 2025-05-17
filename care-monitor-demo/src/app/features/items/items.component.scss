@@ -1,0 +1,94 @@
+@use '../../../assets/styles/variable' as *;
+@use '@angular/material' as mat;
+
+.my-custom-paginator {
+  @include mat.paginator-overrides((container-background-color: rgb(218, 223, 230),
+      container-text-size:16px,
+    ));
+}
+
+
+.items-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .list-header-wrapper {
+    padding: 40px 16px;
+
+    h2 {
+      font-size: 32px;
+      font-weight: 900 !important;
+    }
+  }
+
+  th.mat-header-cell {
+    position: sticky;
+    top: 0;
+    background: $bg-color-dark;
+    z-index: 2;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .sticky-header {
+    background-color: $bg-color-ligh;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  flex: 1;
+  align-items: center;
+}
+
+.full-height-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-container {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+
+.fixed-table {
+  table-layout: fixed;
+
+  .fixed-table th,
+  .fixed-table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+
+.mat-column-id {
+  width: 10%;
+}
+
+.mat-column-name {
+  width: 30%;
+}
+
+.mat-column-description {
+  width: 60%;
+}
+
+.mat-elevation-z4 {
+  background: unset;
+  border: unset;
+  box-shadow: unset;
+  height: 100%;
+}

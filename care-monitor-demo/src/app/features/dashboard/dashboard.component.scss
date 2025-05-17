@@ -1,0 +1,22 @@
+@use '../../../assets/styles/mixins' as *;
+@use '../../../assets/styles/variable' as *;
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100%;
+  .main-content{
+    flex: 1;
+    padding: 20px;
+    @include centerBox();
+    flex-direction: column;
+
+    h2{
+      font-size: 40px;
+      font-weight: 900 !important;
+    }
+    .user-details{
+      font-size: 2rem;
+      color:$bg-color-ligh;
+    }
+  }
+}

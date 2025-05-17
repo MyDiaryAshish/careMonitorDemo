@@ -1,0 +1,23 @@
+<header class="app-header">
+  <h1 class="left">
+    <a [routerLink]="['/dashboard']"> CareMonitor </a>
+  </h1>
+  <div class="right">
+    <!-- <button (click)="logout()">Logout</button> -->
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item  (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>account_circle</mat-icon>
+        <span>Profile Details</span>
+      </button>
+    </mat-menu>
+
+  </div>
+</header>

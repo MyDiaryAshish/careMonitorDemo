@@ -1,0 +1,11 @@
+.error-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: #ffebee;
+  color: #c62828;
+  font-weight: 500;
+  box-shadow: unset;
+}
