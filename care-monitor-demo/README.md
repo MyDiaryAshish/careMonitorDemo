@@ -57,3 +57,17 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Breakdown of the reasoning behind the key folders:
+- **`src/app`**: We've structured it to clearly distinguish between different types of code:
+    - **`core`**: This directory houses essential, application-wide services (like our `AuthService` and `MockApiService`), guards (`AuthGuard`)
+    
+    - **`features`**: This is where we organize our application based on its different functionalities or sections (like `dashboard`, `items`, and `login`). Each feature has its own dedicated folder, containing its components, any specific services it might need, and its own state management if it's more complex (like the `items.store.ts`).
+    
+    - **`shared`**: This directory contains components (`error-banner`, `spinner`) and layout elements (`header`, `sidenav`) that are used across multiple features. 
+    By centralizing these reusable pieces, we ensure consistency in our UI and avoid code duplication.
+    
+    - The root level of `app` contains the main `AppComponent` and the application-wide routing (`app.routes.ts`).
+- **`src/assets`**: This directory is dedicated to storing **static assets** that are part of our application.
+    - **`styles`**: This directory contains global or application-wide styling rules and utilities.
+    - Organizing global styles into dedicated files like `_mixins.scss` and `_variable.scss` promotes better style management, reusability, and maintainability across the application.
