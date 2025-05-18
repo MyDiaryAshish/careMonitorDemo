@@ -1,42 +1,51 @@
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthGuard } from './auth.guard';
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;
   let cookieService: jasmine.SpyObj<CookieService>;
-  let router: jasmine.SpyObj<Router>;
+  let router: Router;
 
   beforeEach(() => {
-
-    const cookieServiceSpy = jasmine.createSpyObj('CookieService', ['get']);
-    const routerSpy = jasmine.createSpyObj('Router', ['navigate', 'parseUrl']);
-    // const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+    cookieService = jasmine.createSpyObj('CookieService', ['get']);
 
     TestBed.configureTestingModule({
+      imports: [],
       providers: [
         AuthGuard,
-        { provide: CookieService, useValue: cookieServiceSpy },
-        { provide: Router, useValue: routerSpy },
+        { provide: CookieService, useValue: cookieService },
       ],
     });
-
     guard = TestBed.inject(AuthGuard);
-    cookieService = TestBed.inject(CookieService) as jasmine.SpyObj<CookieService>;
-    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
+    router = TestBed.inject(Router);
+    spyOn(router, 'parseUrl').and.returnValue('/login' as any);
   });
 
-  it('should allow activation if auth token exists', () => {
-    cookieService.get.and.returnValue('token123');
-    const result = guard.canActivate();
-    expect(result).toBeTrue();
+  it('should be created', () => {
+    expect(guard).toBeTruthy();
   });
 
-  it('should redirect to login if auth token is missing', () => {
+  it('should return true if the user is authenticated (authToken exists)', () => {
+    cookieService.get.and.returnValue('validToken');
+    const route = {} as ActivatedRouteSnapshot;
+    const state = { url: '/some-protected-url' } as RouterStateSnapshot;
+
+    const canActivateResult = guard.canActivate(route, state);
+
+    expect(canActivateResult).toBe(true);
+    expect(router.parseUrl).not.toHaveBeenCalled();
+  });
+
+  it('should return a UrlTree redirecting to /login if the user is not authenticated (authToken is missing)', () => {
     cookieService.get.and.returnValue('');
-    const result = guard.canActivate();
-    expect(result).toBeFalse();
-    expect(router.navigate).toHaveBeenCalledWith(['/login']);
+    const route = {} as ActivatedRouteSnapshot;
+    const state = { url: '/some-protected-url' } as RouterStateSnapshot;
+
+    const canActivateResult = guard.canActivate(route, state);
+
+    expect(canActivateResult).toEqual('/login' as any);
+    expect(router.parseUrl).toHaveBeenCalledWith('/login');
   });
 });

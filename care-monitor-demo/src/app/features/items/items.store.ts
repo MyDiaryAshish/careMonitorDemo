@@ -4,7 +4,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-interface Item {
+export interface Item {
   id: number;
   name: string;
   description: string;

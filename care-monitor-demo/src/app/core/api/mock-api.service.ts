@@ -13,7 +13,7 @@ interface Item {
   description: string;
 }
 
-interface MockDbSchema {
+export interface MockDbSchema {
   users: User[];
   items: Item[];
 }
@@ -75,7 +75,7 @@ export class MockApiService implements InMemoryDbService {
       { id: 47, name: 'Wyatt Rogers', description: 'Male, 38 years old, Insomnia' },
       { id: 48, name: 'Camila Reed', description: 'Female, 30 years old, Anemia' },
       { id: 49, name: 'Julian Cook', description: 'Male, 45 years old, Arthritis' },
-      { id: 50, name: 'Penelope Morgan', description: 'Female, 53 years old, Thyroid' },
+      { id: 50, name: 'Penelope Morgan', description: 'Female, 53 years old, Thyroid' }
     ];
 
     return { users, items };

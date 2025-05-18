@@ -7,12 +7,14 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MockApiService } from './core/api/mock-api.service';
+import { provideAnimations } from '@angular/platform-browser/animations';
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withInterceptors([])), // We’ll add auth interceptor later
+    provideHttpClient(withInterceptors([])),
     importProvidersFrom(
       HttpClientInMemoryWebApiModule.forRoot(MockApiService, {
         passThruUnknownUrl: true,
