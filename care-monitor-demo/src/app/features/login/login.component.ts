@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
-// import { SpinnerService } from '../../core/service/spinner.service'
 import { ErrorBannerComponent } from "../../shared/components/error-banner/error-banner.component";
-import { ItemsStore } from '../items/items.store';
 import { AuthService } from '../../core/service/auth.service';
 
 
@@ -41,21 +37,15 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router,
-    private cookieService: CookieService,
-    public store: ItemsStore,
     private authService: AuthService,
-    // private SpinnerService: SpinnerService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
-    // this.loadingApp = this.SpinnerService.loading;
   }
 
   onSubmit(): void {
-    // this.SpinnerService.show();
     if (this.loginForm.invalid) return;
 
     this.loading = true;
@@ -64,16 +54,12 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           this.authService.login(response.token, response.user.email);
-          // this.SpinnerService.hide();
-          this.router.navigate(['/dashboard']);
         },
         error: (err: any) => {
-          // this.SpinnerService.hide();
           const errorMsg = err?.body?.error || 'Login failed';
           this.errorMessage = errorMsg;
         },
         complete: () => {
-          // this.SpinnerService.hide();
           this.loading = false;
         },
       });

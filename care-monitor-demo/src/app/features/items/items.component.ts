@@ -23,7 +23,6 @@ export class ItemsComponent implements OnInit {
     pageSize = 10;
   currentPage = signal(0);
 
-  // Assume store.items() is a signal returning an array
   pagedItems = computed(() => {
     const allItems = this.store.items();
     const start = this.currentPage() * this.pageSize;

@@ -1,6 +1,7 @@
 @use '../../../assets/styles/variable' as *;
 @use '@angular/material' as mat;
 
+// TO change the font of the pagination text
 .my-custom-paginator {
   @include mat.paginator-overrides((container-background-color: rgb(218, 223, 230),
       container-text-size:16px,
@@ -73,7 +74,7 @@
   }
 }
 
-
+// TO set the width of the table columns
 .mat-column-id {
   width: 10%;
 }

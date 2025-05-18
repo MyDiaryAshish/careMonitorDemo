@@ -1,18 +1,11 @@
-<div *ngIf="auth.isLoggedIn() === null" class="loading-container">
+<div *ngIf="isLoggedIn() === null" class="loading-container">
   <app-spinner></app-spinner>
 </div>
 
-<div *ngIf="auth.isLoggedIn() === true" class="app-wrapper">
+<div *ngIf="isLoggedIn() !== null" class="app-wrapper">
   <app-header *ngIf="isLoggedIn()"></app-header>
   <main class="main-content">
     <app-sidenav class="sidenav-wrapper" *ngIf="isLoggedIn()"></app-sidenav>
-    <div class="app-wrapper-inner">
-      <router-outlet></router-outlet>
-    </div>
-  </main>
-</div>
-<div *ngIf="auth.isLoggedIn() === false" class="app-wrapper">
-  <main class="main-content">
     <div class="app-wrapper-inner">
       <router-outlet></router-outlet>
     </div>

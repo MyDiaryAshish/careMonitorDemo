@@ -26,6 +26,7 @@ export class AuthService {
     this.cookieService.set('userEmail', email);
     this._isLoggedIn.set(true);
     this._userEmail.set(email);
+    this.router.navigate(['/dashboard']);
   }
 
   logout(): void {

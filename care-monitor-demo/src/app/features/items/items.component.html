@@ -1,16 +1,17 @@
+<!-- To show the spinner/loader -->
 <div class="items-wrapper">
   <mat-card *ngIf="store.loading(); else tableContent" class="mat-elevation-z4">
     <div class="loading-container">
       <app-spinner></app-spinner>
     </div>
   </mat-card>
-
+  <!-- To show the Error -->
   <mat-card *ngIf="store.error()" class="mat-elevation-z4">
     <div class="loading-container">
       <app-error-banner [message]="store.error()"></app-error-banner>
     </div>
   </mat-card>
-
+<!-- List table starts here -->
   <ng-template #tableContent>
     <mat-card class="mat-elevation-z4 full-height-card">
       <mat-toolbar color="primary" class="mat-elevation-z2 list-header-wrapper">

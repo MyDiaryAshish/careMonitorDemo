@@ -8,12 +8,9 @@ body { margin: 0;}
  font-family: 'Nunito', sans-serif !important;
 }
 
-
-
-/* In your global styles file (src/styles.scss) */
-
+// Mat modules Pagination styles
 .mat-paginator {
-  font-size: 1.1rem; /* Use relative units for better scalability */
+  font-size: 1.1rem;
 }
 
 .mat-paginator-page-size .mat-form-field-label {
@@ -37,4 +34,14 @@ body { margin: 0;}
 
 .mat-icon {
   font-size: 1.2rem;
+}
+
+/* Hide scrollbar for all elements but keep scroll functionality */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
 }

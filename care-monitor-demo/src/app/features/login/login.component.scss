@@ -51,6 +51,10 @@
       justify-content: center;
       padding: 2rem;
 
+      .sign-in-text {
+        color: #46567c;
+        font-weight: 900;
+      }
       .terms-conditions{
         span{
           font-size: 16px;
@@ -59,36 +63,6 @@
       }
     }
   }
-}
-
-
-// Material styles start
-.login-card {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
-
-.full-width {
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.error-banner {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  background-color: #ffebee;
-  color: #c62828;
-  font-weight: 500;
 }
 
 .banner-wrapper {

@@ -3,6 +3,7 @@
 <!-- Login UI combination of Bootstrap and Material  -->
 <div class="login-wrapper">
   <div class="row login-wrapper-inner">
+    <!-- Left side banner start -->
     <div class="banner col-md-6 col-sm-12">
       <div class="banner-wrapper">
         <img src="assets/images/cmLoginLogo.png" alt="Care Monitor Logo" />
@@ -13,10 +14,11 @@
         <h3>Enabling person-centred at-home care through cloud-based solutions.</h3>
       </div>
     </div>
+    <!-- Right side login start -->
     <div class="login col-md-6 col-sm-12">
       <div class="login-container">
         <div class="login-header-wrapper pb-3 text-center">
-          <h2>Sign in to continue</h2>
+          <h2 class="sign-in-text">Sign in to continue</h2>
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
           <mat-form-field appearance="outline" class="login-input-field">
