@@ -121,6 +121,88 @@ Here's a detailed analysis of key aspects:
     - **Error Handling:** Displays an error message if fetching user data fails.
 - **Route Navigation:** The application uses Angular routing to navigate between different views: login, dashboard, and user list.
 
+# Unit Test Case Details
+
+## Tools Used
+
+This project utilizes the following tools for its unit testing suite:
+
+- **Jasmine:** A behavior-driven development (BDD) framework for JavaScript used to write expressive test specifications.
+- **Karma:** A test runner that executes the Jasmine tests in a browser environment.
+
+## Core Functionality Tests:
+
+**AuthService:**
+
+- Verifies the correct setting and retrieval of authentication tokens and user email in cookies.
+- Ensures the `isLoggedIn()` method accurately reflects the authentication status.
+- Confirms navigation to the dashboard upon successful login and to the login page upon logout.
+- Tests the clearing of authentication cookies and resetting of user state on logout.
+
+**AuthGuard:**
+
+- Checks if the guard allows access to protected routes when a valid authentication token exists.
+- Verifies that the guard redirects unauthenticated users to the login page.
+
+**MockApiService:**
+
+- Confirms that the mock API service can be instantiated correctly.
+- Tests the initialization of the mock database with the expected user and item data.
+- Verifies the correct parsing of request URLs, especially for login requests.
+- Tests the `post()` method for the `/api/login` endpoint with valid and invalid credentials, ensuring the correct success and error responses (including status codes and response bodies).
+- Confirms that `post()` for non-login collections returns `undefined`.
+
+## Component-Specific Tests:
+
+**AppComponent:**
+
+- Verifies the creation of the main application component.
+- Tests the conditional rendering of the loading spinner based on the authentication loading state.
+- Ensures the header, sidenav, and router outlet are displayed when the user is logged in (or not in a loading state).
+- Confirms that the `logout()` method in the component calls the `AuthService`'s `logout()` method.
+
+**LoginComponent:**
+
+- Verifies the creation and initialization of the login form with email and password controls.
+- Tests that form validation (required and email format) is enforced.
+- Ensures that the component attempts to log in via the `AuthService` on form submission with valid credentials.
+- Tests the display of error messages for failed login attempts (invalid credentials, network errors).
+- Verifies the loading state and disabling of the login button during the login process.
+
+**DashboardComponent:**
+
+- Verifies the creation of the dashboard component.
+- Tests the retrieval and display of the user's email from the `CookieService` upon initialization.
+- Handles cases where the user email cookie is not found.
+
+**ErrorBannerComponent:**
+
+- Verifies the creation of the error banner component.
+- Tests the conditional rendering of the error card based on the presence of an error message.
+- Ensures the provided error message is correctly displayed in the banner.
+- Confirms the presence and styling of the error icon.
+
+**SpinnerComponent:**
+
+- Verifies the creation of the spinner component.
+- Ensures the Material spinner element is rendered.
+- Checks for the presence of custom CSS classes.
+
+**HeaderComponent:**
+
+- Verifies the creation of the header component.
+- Tests the presence and navigation link of the "CareMonitor" title.
+- Ensures the account menu button is present.
+- Verifies the presence and text of the "Logout" button in the menu.
+- Confirms that clicking the logout button triggers the `logout()` method, which in turn calls the `AuthService`.
+
+**SidenavComponent:**
+
+- Verifies the creation of the sidenav component.
+- Tests the presence and `routerLink` attributes of the navigation links (Dashboard and View List).
+- Ensures the `routerLinkActive` directive is applied correctly.
+- Checks for the presence of Material icons and their associated text.
+
 # Potential Future Features (Security Enhancements):
 
 - **Data Encryption in Cookies:** Implement encryption/decryption of sensitive data (like the authentication token and user email) before storing it in cookies to enhance security.
