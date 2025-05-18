@@ -1,3 +1,4 @@
+@use '../../../../assets/styles/variable' as *;
 .sidenav {
   width: 185px;
   height: 100%;
@@ -19,8 +20,16 @@
         font-size: 20px;
         display: flex;
         gap: 10px;
+        color: $bg-color-ligh;
+        padding: 5px 0;
+        border-bottom:2px solid transparent ;
         &.active {
-          color: #007bff;
+          font-weight: 900;
+          border-bottom:2px solid $bg-color-dark ;
+          color: $bg-color-dark;
+        }
+        &:hover{
+          color:$bg-color-dark;
         }
       }
       .mat-18{

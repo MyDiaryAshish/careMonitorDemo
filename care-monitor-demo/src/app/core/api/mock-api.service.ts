@@ -23,7 +23,7 @@ interface MockDbSchema {
 export class MockApiService implements InMemoryDbService {
   createDb(): MockDbSchema {
     const users = [
-      { id: 1, email: '123@123', password: '123', token: 'abcd12324' },
+      { id: 1, email: 'demo@caremonitor.com', password: 'Demo@123', token: 'abcd12324' },
     ];
     const items = [
       { id: 1, name: 'John Doe', description: 'Male, 32 years old, Diabetes' },
