@@ -44,7 +44,7 @@ A mocked API facilitates development, and clear instructions aid project setup.
     1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/MyDiaryAshish/careMonitorDemo.git](https://github.com/MyDiaryAshish/careMonitorDemo.git)
+    git clone https://github.com/MyDiaryAshish/careMonitorDemo.git
     ```
 
     2. **Install Dependencies:**
