@@ -33,4 +33,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }} # Automatically provided token for authentication
         # This is your build output path from angular.json: 'dist/care-monitor-demo'
-        publish_dir: ./dist/care-monitor-demo
+        publish_dir: ./dist/care-monitor-demo/browser
