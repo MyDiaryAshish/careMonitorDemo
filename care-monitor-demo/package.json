@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production --base-href /careMonitorDemo/",
+    "build": "ng build --configuration production --base-href /careMonitorDemo/ --output-path dist/care-monitor-demo --aot",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:care-monitor-demo": "node dist/care-monitor-demo/server/server.mjs"
