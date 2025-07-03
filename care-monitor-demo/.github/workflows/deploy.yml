@@ -1,46 +1,55 @@
 # .github/workflows/deploy.yml
-name: Deploy Angular App to GitHub Pages Ashish
+name: Deploy Angular App to GitHub Pages Ashish # You can customize this name
 
 on:
   push:
-    branches: [ "main" ] # Trigger on push to main branch
-  workflow_dispatch: # Allows manual trigger from Actions tab
+    branches: [ "main" ] # This workflow triggers when changes are pushed to 'main'
+  workflow_dispatch: # Allows you to manually trigger it from the Actions tab on GitHub
 
+# These permissions are CRUCIAL for the official GitHub Pages actions to work
 permissions:
-  contents: read # Allow reading repository content
-  pages: write   # Allow writing to the GitHub Pages deployment
-  id-token: write # Allow authentication with GitHub OIDC Token
+  contents: read     # Allows the workflow to read your repository code
+  pages: write      # Allows the workflow to publish to GitHub Pages
+  id-token: write   # Required for authentication with GitHub's OIDC Token
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # The runner environment (e.g., Ubuntu)
+
+    # Configure environment for GitHub Pages deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }} # The URL of the deployed site
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4 # Action to clone your repository's code
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4 # Sets up the Node.js environment
         with:
-          node-version: '20' # Use your preferred Node.js version
+          node-version: '20' # IMPORTANT: Ensure this matches your Angular project's compatible Node.js version. '20' is good.
 
       - name: Install Dependencies
+        # 'npm ci' is recommended for CI/CD as it's faster and uses package-lock.json
         run: npm ci
 
       - name: Build Angular Application
-        # Build your Angular app. 'outputPath' in angular.json is 'dist/care-monitor-demo'
-        # Use --base-href for routing if not configured in angular.json already
-        run: npm run build --configuration production --base-href=/careMonitorDemo/
+        # This command runs the 'build' script defined in your package.json
+        # The 'base-href' is already specified in package.json, so you don't need to repeat it here.
+        # Just call the 'build' script.
+        run: npm run build
 
       - name: Upload Pages Artifact
+        # This action uploads the built files as an artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/care-monitor-demo/browser # Path to your built Angular app
+          # This path must be the EXACT path where your 'index.html' and other compiled files are.
+          # From your angular.json "outputPath": "dist/care-monitor-demo"
+          # And your file explorer: .../dist/care-monitor-demo/browser/index.html
+          path: ./dist/care-monitor-demo/browser # This is correct
 
       - name: Deploy to GitHub Pages
+        # This action takes the uploaded artifact and deploys it to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        # This action requires the 'pages' permission in the workflow and the 'Deploy from a branch' setting.
