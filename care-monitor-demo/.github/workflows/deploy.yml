@@ -1,0 +1,36 @@
+# .github/workflows/deploy.yml
+name: Deploy Angular App to GitHub Pages
+
+on:
+  push:
+    branches: [ main ] # Trigger workflow when changes are pushed to 'main' branch
+  pull_request:
+    branches: [ main ] # Also trigger for PRs to 'main' (optional, but good for checks)
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # Use a fresh Ubuntu environment for each run
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4 # Action to clone your repository
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4 # Action to set up Node.js environment
+      with:
+        node-version: '20' # Specify your Node.js version (e.g., '16', '18', '20', '22')
+
+    - name: Install Dependencies
+      run: npm ci # Installs dependencies from package-lock.json (good for CI/CD)
+
+    - name: Build Angular Application
+      # The base-href MUST match your GitHub Pages URL path: /your-repository-name/
+      # Your repository name is 'careMonitorDemo'
+      run: npm run build -- --base-href=/careMonitorDemo/
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4 # GitHub Action for deploying to gh-pages
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }} # Automatically provided token for authentication
+        # This is your build output path from angular.json: 'dist/care-monitor-demo'
+        publish_dir: ./dist/care-monitor-demo

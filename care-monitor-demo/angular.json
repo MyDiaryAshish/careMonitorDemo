@@ -20,6 +20,7 @@
             "outputPath": "dist/care-monitor-demo",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/careMonitorDemo/",
             "polyfills": [
               "zone.js"
             ],
@@ -104,6 +105,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

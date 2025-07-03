@@ -36,6 +36,7 @@ export class ItemsComponent implements OnInit {
 
 
   handlePageChange(event: PageEvent) {
+    alert(event.pageIndex)
     this.currentPage.set(event.pageIndex);
   }
 }
